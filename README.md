@@ -46,9 +46,6 @@ git-log(:path($path.IO), '2018.06..master')
 git-log(:!get-changes)
 ```
 
-SEE ALSO
-========
-
 LICENSE
 =======
 
@@ -58,7 +55,7 @@ This is free software; you can redistribute it and/or modify it under the Artist
 
 ```perl6
 sub git-log(
-    @args?,
+    *@args,
     :@fields = { ... },
     IO::Path :$path,
     Bool:D :$get-changes = Bool::True,

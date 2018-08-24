@@ -70,7 +70,7 @@ my $commit-sep = 0x102B7D.chr;
 #| git-log's first argument is an array that is passed to C<git log> and
 #| optionally you can provide a path so a directory other than the current
 #| are used.
-sub git-log (@args?, :@fields = @fields-default, IO::Path :$path,
+sub git-log (*@args, :@fields = @fields-default, IO::Path :$path,
              Bool:D :$get-changes = True, Bool:D :$date-time = False) is export {
     my @log-arg = 'log';
     @log-arg.prepend('--git-dir', $path.child(".git").absolute) if $path;
@@ -111,6 +111,7 @@ sub git-log (@args?, :@fields = @fields-default, IO::Path :$path,
     }
     @commits;
 }
+
 sub get-data (Str:D $str, %commit-data) {
     my @lines = $str.lines.grep({ $_ ne ""});
     my $commit = @lines.shift;
