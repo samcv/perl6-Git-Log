@@ -7,3 +7,6 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [0.1.0] - 2018-08-24
 - Initial release
+
+## [0.1.1] - 2018-08-24
+- Make arguments to `git-log` slurpy.
