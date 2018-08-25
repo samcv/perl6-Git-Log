@@ -20,10 +20,15 @@
     "Git::Log": "lib/Git/Log.pm6"
   },
   "resources": [
-
+    
   ],
+  "source-url": "https://github.com/samcv/perl6-Git-Log.git",
+  "support": {
+    "bugtracker": "https://github.com/samcv/perl6-Git-Log/issues",
+    "license": "http://www.perlfoundation.org/artistic_license_2_0"
+  },
   "tags": [
-
+    
   ],
-  "version": "0.1.1"
+  "version": "0.1.2"
 }

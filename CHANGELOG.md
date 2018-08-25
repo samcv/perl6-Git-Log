@@ -10,3 +10,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [0.1.1] - 2018-08-24
 - Make arguments to `git-log` slurpy.
+
+## [0.1.2] - 2018-08-25
+- Disable the test since otherwise zef will not install Git::Log properly.
+  A new test will have to be added later.
