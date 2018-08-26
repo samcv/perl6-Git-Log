@@ -18,15 +18,15 @@ DESCRIPTION
 
 The first argument is the command line args wanted to be passed into `git log`. Optionally you can also get the files changes as well as the number of lines added or deleted.
 
-Returns an array of hashes in the following format: `commit => "df0c229ad6ba293c67724379bcd3d55af6ea47a0", AuthorName => "Author's Name", AuthorEmail => "sample.email@not-a.url" ...` If the option :get-changes is used (default) it will also add a 'changes' key in the following format: `changes => { $[ { filename => 'myfile.txt', added => 10, deleted => 5 }, ... ] }`
+Returns an array of hashes in the following format: `ID => "df0c229ad6ba293c67724379bcd3d55af6ea47a0", AuthorName => "Author's Name", AuthorEmail => "sample.email@not-a.url" ...` If the option :get-changes is used (off by default) it will also add a 'changes' key in the following format: `changes => { $[ { filename => 'myfile.txt', added => 10, deleted => 5 }, ... ] }`
 
-If there is a field that you need that is not offered, then you can supply an array, :@fields. Format is an array of pairs: `commit => '%H', AuthorName => '%an' ...` you can look for more [here](https://git-scm.com/docs/pretty-formats).
+If there is a field that you need that is not offered, then you can supply an array, :@fields. Format is an array of pairs: `ID => '%H', AuthorName => '%an' ...` you can look for more [here](https://git-scm.com/docs/pretty-formats).
 
 These are the default fields:
 
 ```perl6
 my @fields-default =
-    'commit'       => '%H',
+    'ID'           => '%H',
     'AuthorName'   => '%an',
     'AuthorEmail'  => '%ae',
     'AuthorDate'   => '%aI',
@@ -58,7 +58,7 @@ sub git-log(
     *@args,
     :@fields = { ... },
     IO::Path :$path,
-    Bool:D :$get-changes = Bool::True,
+    Bool:D :$get-changes = Bool::False,
     Bool:D :$date-time = Bool::False
 ) returns Mu
 ```
