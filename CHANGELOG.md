@@ -14,3 +14,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ## [0.1.2] - 2018-08-25
 - Disable the test since otherwise zef will not install Git::Log properly.
   A new test will have to be added later.
+
+## [0.2.0] - 2018-08-25
+- :get-changes is now off by default
+- The commit ID is now called "ID" by default, not "commit"
