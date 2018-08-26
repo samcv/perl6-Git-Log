@@ -19,21 +19,21 @@ Optionally you can also get the files changes as well as the number of lines
 added or deleted.
 =para
 Returns an array of hashes in the following format:
-C<<commit => "df0c229ad6ba293c67724379bcd3d55af6ea47a0",
+C<<ID => "df0c229ad6ba293c67724379bcd3d55af6ea47a0",
 AuthorName => "Author's Name", AuthorEmail => "sample.email@not-a.url" ...>>
 If the option :get-changes is used (default) it will also add a 'changes' key in the
 following format: C<<changes => { $[ { filename => 'myfile.txt', added => 10, deleted => 5 }, ... ] }>>
 
 =para
 If there is a field that you need that is not offered, then you can supply an
-array, :@fields. Format is an array of pairs: C<<commit => '%H', AuthorName => '%an' ...>>
+array, :@fields. Format is an array of pairs: C<<ID => '%H', AuthorName => '%an' ...>>
 you can look for more L<here|https://git-scm.com/docs/pretty-formats>.
 
 =para
 These are the default fields:
 =begin code :lang<perl6>
 my @fields-default =
-    'commit'       => '%H',
+    'ID'           => '%H',
     'AuthorName'   => '%an',
     'AuthorEmail'  => '%ae',
     'AuthorDate'   => '%aI',
@@ -57,7 +57,7 @@ the Artistic License 2.0.
 =end pod
 
 my @fields-default =
-    'commit'       => '%H',
+    'ID'           => '%H',
     'AuthorName'   => '%an',
     'AuthorEmail'  => '%ae',
     'AuthorDate'   => '%aI',
@@ -106,7 +106,7 @@ sub git-log (*@args, :@fields = @fields-default, IO::Path :$path,
         my %commit-data;
         $stat-text.split($commit-sep).map({ get-data($_, %commit-data) });
         for @commits -> $commit {
-            $commit<changes> = %commit-data{$commit<commit>};
+            $commit<changes> = %commit-data{$commit<ID>};
         }
     }
     @commits;
