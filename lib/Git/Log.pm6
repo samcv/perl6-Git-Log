@@ -21,7 +21,7 @@ added or deleted.
 Returns an array of hashes in the following format:
 C<<ID => "df0c229ad6ba293c67724379bcd3d55af6ea47a0",
 AuthorName => "Author's Name", AuthorEmail => "sample.email@not-a.url" ...>>
-If the option :get-changes is used (default) it will also add a 'changes' key in the
+If the option :get-changes is used (off by default) it will also add a 'changes' key in the
 following format: C<<changes => { $[ { filename => 'myfile.txt', added => 10, deleted => 5 }, ... ] }>>
 
 =para
