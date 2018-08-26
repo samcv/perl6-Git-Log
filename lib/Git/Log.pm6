@@ -71,7 +71,7 @@ my $commit-sep = 0x102B7D.chr;
 #| optionally you can provide a path so a directory other than the current
 #| are used.
 sub git-log (*@args, :@fields = @fields-default, IO::Path :$path,
-             Bool:D :$get-changes = True, Bool:D :$date-time = False) is export {
+             Bool:D :$get-changes = False, Bool:D :$date-time = False) is export {
     my @log-arg = 'log';
     @log-arg.prepend('--git-dir', $path.child(".git").absolute) if $path;
     my $format = '--pretty=format:' ~ @fields».value.join($column-sep) ~ $commit-sep;
